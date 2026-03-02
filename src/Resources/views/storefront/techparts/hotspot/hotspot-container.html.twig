@@ -1,0 +1,26 @@
+<div class="hotspot--popup"
+     data-id="{{ hotspot.id }}"
+     data-coords="{{ hotspot.coordX }};{{ hotspot.coordY }}"
+     data-coord-nr="{{ hotspot.position+1 }}">
+    <div class="close-btn"><i class="icon--cross"></i></div>
+
+    <div class="padding--container">
+            	    <span class="mobile-headline">{{ "techparts.partList.headline"|trans }}</span>
+                    {% block yaparis_techparts_illustration_part_list_table_header %}
+                        <header class="row desktop-header">
+                            <div class="col col-product-image"></div>
+                            <div class="col">{{ "techparts.partList.articleName"|trans }}</div>
+                            <div class="col">{{ "techparts.partList.articleNumber"|trans }}</div>
+                            <div class="col">{{ "techparts.partList.price"|trans }}</div>
+                            <div class="col col-actions"></div>
+                        </header>
+                    {% endblock %}
+        {% for assignedProduct in hotspot.assignedProducts %}
+            {% if assignedProduct.salesChannelProduct %}
+                {% sw_include "@Storefront/storefront/techparts/components/hotspot-product-box.html.twig" with {
+                    product: assignedProduct.salesChannelProduct
+                } %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

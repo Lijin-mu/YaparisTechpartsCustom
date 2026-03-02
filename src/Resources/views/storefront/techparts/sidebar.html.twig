@@ -1,0 +1,7 @@
+{% block element_category_navigation %}
+{% set navigation = element.data.tree %}
+{% set navigationMaxDepth = context.salesChannel.navigationCategoryDepth %}
+<span class="twt-subcategory-navigation-depth" data-depth="{{ navigationMaxDepth }}"></span>
+{% sw_include '@Storefront/storefront/section/cms-section-block-container.html.twig' %}
+{% endblock %}
+

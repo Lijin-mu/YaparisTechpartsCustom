@@ -1,0 +1,153 @@
+.tparts-explosion-box {
+  .hotspot--popup {
+    width: 500px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    .row{
+      --bs-gutter-x: 8px;
+    }
+    .mobile-headline {
+      display: none;
+      width: 100%;
+    }
+    .close-btn {
+      display: none;
+    }
+    // .tparts--list-header {
+    //   padding: 0 20px;
+    // }
+    .mobile-headline,
+    .desktop-header,
+    footer {
+      background: #efefef;
+    }
+     .mobile-headline,
+    .desktop-header{
+      padding: 8px;
+    }
+    footer{
+      margin-left: -8px;
+      margin-right: -8px;
+    }
+    a:not(:hover) {
+      text-decoration: none;
+    }
+    .product-action {
+      margin-top: 0;
+  }
+  .col.col-product-price{
+    margin-top: 0;
+  }
+
+    .col.col-product-price {
+      flex: 0 0 18%;
+      max-width: 18%;
+      font-size: 12px;
+      align-content: center;
+    }
+
+    .col.col-product-number {
+      flex: 0 0 18%;
+      max-width: 18%;
+      font-size: 12px;
+      align-content: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .col.col-product-name {
+      flex: 1;
+      max-width: 26%;
+      font-size: 12px;
+      align-content: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .col.col-product-image {
+      flex: 0 0 12%;
+      max-width: 12%;
+      align-content: center;
+    }
+
+    .col.col-actions {
+      flex: 0 0 28%;
+      max-width: 28%;
+      font-size: 12px;
+      align-content: center;
+    }
+    .tparts--list-link,
+    .btn-buy,
+    .product-price-wrapper {
+      font-size: 12px;
+    }
+    .product-cheapest-price {
+      font-size: 10px;
+    }
+    .tparts--list-link{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .product-popup-box {
+      padding: 0 8px;
+      .product-image-wrapper {
+        height: 50px;
+        margin: 0;
+        .product-wishlist {
+          display: none;
+        }
+      }
+      .product-price-tax-link {
+        display: none;
+      }
+      .product-detail-delivery-information {
+        margin-bottom: 0;
+        font-size: 12px;
+        padding: 5px;
+        .delivery-information{
+          margin-bottom: 0;
+        }
+      }
+      .list-container {
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+/* Smartphone */
+@include media-breakpoint-down(sm) {
+   .cms-section-sidebar-sidebar-content .techparts {
+    display: none;
+   }
+  .tparts-explosion-box {
+    .hotspot--popup {
+      .mobile-headline {
+        display: block;
+      }
+    }
+  }
+}
+
+.tparts-explosion-box .tparts--explosion-chart-img-wrapper .hotspot--container .hotspot:hover {
+  &:hover,
+  .active{
+    background: #ff0000;
+  }
+}
+
+.product-price-info{
+  .product-price-wrapper{
+    .product-price {
+      font-size: 12px;
+    }
+  }
+}
+
+.tparts-explosion-box .hotspot--popup .col.col-product-price {
+  padding-right: 10px;
+}
+.col-product-price .product-price-info {
+  margin-top: 0;
+}

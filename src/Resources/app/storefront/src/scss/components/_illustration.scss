@@ -1,0 +1,35 @@
+.zoom-button-box-wrapper {
+  padding: 5px 10px;
+  background: #efefef;
+  display: flex;
+  justify-content: flex-end;
+  .zoom--button-box {
+    .zoom--text {
+      padding-right: 10px;
+      font-weight: bold;
+    }
+    .zoom--in,
+    .zoom--out,
+    .zoom--reset {
+      background: transparent;
+      border: none;
+      padding: 0;
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .tparts--split-view {
+    min-height: 450px;
+  }
+}
+
+a.tparts--list-link:not(:hover) {
+  text-decoration: none;
+  color: inherit;
+}
+a.product-price-tax-link:not(:hover) {
+  text-decoration: none;
+  color: inherit;
+}

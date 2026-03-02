@@ -1,0 +1,162 @@
+{% sw_extends "@YaparisTechparts/storefront/techparts/illustration.html.twig" %}
+
+
+ {% block yaparis_techparts_illustration_hotspot_container_content %}
+    {% sw_include "@Storefront/storefront/techparts/hotspot/hotspot-popup-container.html.twig" with {
+        hotspot: hotspot
+    } %}
+{% endblock %}
+
+
+
+        {% block yaparis_techparts_illustration_image_wrapper %}
+            <div class="tparts--explosion-chart-img-wrapper zoomContainer split-view col-12{% if showLargeIllustration %} col-lg-12{% else %} col-lg-8{% endif %}">
+
+                <div class="relative--container">
+                    {% set imgWidth = 800 %}
+                    {% set imgHeight = (imgWidth / (illustration.width / illustration.height))|round(0, 'ceil') %}
+
+                    {% if illustration.height > illustration.width %}
+                        {% set imgHeight = (imgWidth / (illustration.height / illustration.width))|round(0, 'ceil') %}
+                    {% endif %}
+
+                    {% sw_thumbnails 'product-image-thumbnails' with {
+                        media: illustration.media,
+                        attributes: {
+                            'class': 'tparts--explosion-chart-img',
+                            'alt': (illustration.media.translated.alt ?: illustration.category.translated.name),
+                            'title': (illustration.media.translated.title ?: illustration.category.translated.name),
+                            'data-org-width': illustration.width,
+                            'data-org-height': illustration.height,
+                            'width': imgWidth,
+                            'height': imgHeight
+                        }
+                    } %}
+                </div>
+
+                {% for hotspot in illustration.hotspots %}
+                    {% if hotspot.assignedProducts|filter(p => p.product.active)|length > 0 %}
+                        {% sw_include "@YaparisTechparts/storefront/techparts/hotspot/hotspot.html.twig" %}
+                    {% endif %}
+                {% endfor %}
+
+                {# <div class="zoom--button-box">
+                    <span class="zoom--text">{{ "techparts.global.zoom"|trans|sw_sanitize }}</span>
+                    <button class="zoom--in" aria-label="zoom in">
+                        {% sw_icon 'plus-block' %}
+                    </button>
+                    <button class="zoom--out" aria-label="zoom out">
+                        {% sw_icon 'minus-block' %}
+                    </button>
+                    <button class="zoom--reset" aria-label="reset zoom">
+                        {% sw_icon 'arrow-360-left' %}
+                    </button>
+                </div> #}
+
+            </div>
+        {% endblock %}
+
+{% block yaparis_techparts_illustration_sidebar_right %}
+{{ parent() }}
+
+<div class="zoom-button-box-wrapper col-12 col-lg-8">
+
+    <div class="zoom--button-box">
+        <span class="zoom--text">{{ "techparts.global.zoom"|trans|sw_sanitize }}</span>
+        <button class="zoom--in" aria-label="zoom in">
+            {% sw_icon 'plus-block' %}
+        </button>
+        <button class="zoom--out" aria-label="zoom out">
+            {% sw_icon 'minus-block' %}
+        </button>
+        <button class="zoom--reset" aria-label="reset zoom">
+            {% sw_icon 'arrow-360-left' %}
+        </button>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{# {% set illustration = page.extensions.techparts.illustration %}
+{% set partList = page.extensions.techparts.partList %}
+
+{% if not showLargeIllustration %}
+    {% set showLargeIllustration = config('YaparisTechparts.config.showLargeIllustration') %}
+{% endif %}
+
+{% block yaparis_techparts_illustration_container %}
+    <div class="tparts-explosion-box row">
+        {% block yaparis_techparts_illustration_hotspot_container %}
+            {% for hotspot in illustration.hotspots %}
+                {% if hotspot.assignedProducts|length > 0 %}
+                    {% block yaparis_techparts_illustration_hotspot_container_content %}
+                        {% sw_include "@YaparisTechparts/storefront/techparts/hotspot/hotspot-popup-container.html.twig" with {
+                            hotspot: hotspot
+                        } %}
+                    {% endblock %}
+                {% endif %}
+            {% endfor %}
+        {% endblock %}
+
+        {% block yaparis_techparts_illustration_image_wrapper %}
+            <div class="tparts--explosion-chart-img-wrapper zoomContainer split-view col-12{% if showLargeIllustration %} col-lg-12{% else %} col-lg-8{% endif %}">
+
+                <div class="relative--container">
+                    {% set imgWidth = 800 %}
+                    {% set imgHeight = (imgWidth / (illustration.width / illustration.height))|round(0, 'ceil') %}
+
+                    {% if illustration.height > illustration.width %}
+                        {% set imgHeight = (imgWidth / (illustration.height / illustration.width))|round(0, 'ceil') %}
+                    {% endif %}
+
+                    {% sw_thumbnails 'product-image-thumbnails' with {
+                        media: illustration.media,
+                        attributes: {
+                            'class': 'tparts--explosion-chart-img',
+                            'alt': (illustration.media.translated.alt ?: illustration.category.translated.name),
+                            'title': (illustration.media.translated.title ?: illustration.category.translated.name),
+                            'data-org-width': illustration.width,
+                            'data-org-height': illustration.height,
+                            'width': imgWidth,
+                            'height': imgHeight
+                        }
+                    } %}
+                </div>
+
+                {% for hotspot in illustration.hotspots %}
+                    {% if hotspot.assignedProducts|filter(p => p.product.active)|length > 0 %}
+                        {% sw_include "@YaparisTechparts/storefront/techparts/hotspot/hotspot.html.twig" %}
+                    {% endif %}
+                {% endfor %}
+                <div class="zoom--button-box">
+                    <span class="zoom--text">{{ "techparts.global.zoom"|trans|sw_sanitize }}</span>
+                    <button class="zoom--in" aria-label="zoom in">
+                        {% sw_icon 'plus-block' %}
+                    </button>
+                    <button class="zoom--out" aria-label="zoom out">
+                        {% sw_icon 'minus-block' %}
+                    </button>
+                    <button class="zoom--reset" aria-label="reset zoom">
+                        {% sw_icon 'arrow-360-left' %}
+                    </button>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block yaparis_techparts_illustration_sidebar_right %}
+            {% if not showLargeIllustration %}
+                {% sw_include "@YaparisTechparts/storefront/techparts/sidebar-right.html.twig" %}
+            {% endif %}
+        {% endblock %}
+    </div>
+
+    <div class="clear"></div>
+
+    {% block yaparis_techparts_illustration_partlist %}
+        {% sw_include "@YaparisTechparts/storefront/techparts/partlist.html.twig" %}
+    {% endblock %}
+{% endblock %} #}

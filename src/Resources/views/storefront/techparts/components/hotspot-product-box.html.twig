@@ -1,0 +1,119 @@
+{% sw_extends '@YaparisTechparts/storefront/techparts/components/hotspot-product-box.html.twig' %}
+
+
+
+{# {% block component_product_box_name %}
+    <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+       class="product-name"
+       title="{{ name }}">
+        {{ name }} ({{ product.productNumber }})
+    </a>
+{% endblock %}
+
+{% block component_product_box_price %}
+    {{ parent() }}
+
+    {% block component_product_box_tax %}
+        <div class="product-detail-tax-container">
+            {% if context.taxState == "gross" %}
+                {% set taxText = "general.grossTaxInformation"|trans|sw_sanitize %}
+            {% else %}
+                {% set taxText = "general.netTaxInformation"|trans|sw_sanitize %}
+            {% endif %}
+
+            <p class="product-detail-tax">
+                {% block component_product_box_tax_link %}
+                    <a class="product-detail-tax-link"
+                       href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+                       title="{{ taxText }}"
+                       data-ajax-modal="true"
+                       data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                        {{ taxText }}
+                    </a>
+                {% endblock %}
+            </p>
+        </div>
+    {% endblock %}
+
+    {% block component_product_box_delivery_informations %}
+        <div class="product-detail-delivery-information">
+            {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' with {
+                product: product
+            } %}
+        </div>
+    {% endblock %}
+{% endblock %} #}
+
+{# {% block component_product_box_action %}
+    {% sw_include '@YaparisTechparts/storefront/techparts/components/action.html.twig' with {
+        product: product,
+        recommendedQty: product.quantity
+    } %}
+{% endblock %} #}
+
+{# {% block component_product_box_image %}{% if not config('YaparisTechparts.config.showImageInPopup') %}{% else %}{{ parent() }}{% endif %}{% endblock %} #}
+
+{% block component_product_box_description %}{% endblock %}
+{% block component_product_box_rating %}{% endblock %}
+{% block component_product_box_variant_characteristics %}{% endblock %}
+
+{% block component_product_box %}
+    {% if product %}
+        {% set name = product.translated.name %}
+        {% set id = product.id %}
+        {% set cover = product.cover.media %}
+        {% set variation = product.variation %}
+        {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+        {% set headlineLevel = element.config.boxHeadlineLevel.value %}
+        {% set headlineClasses = "product-name-headline mb-0" %}
+
+        {% set searchTerm = page.searchTerm %}
+        {% set childCount = product.childCount %}
+        {% set routeArguments = childCount > 0 and searchTerm ? { productId: id, search: searchTerm } : { productId: id } %}
+        <div class="product-popup-box bg-white p-2 p-md-3">
+        					<div class="row list-container" data-product-information="{{ {id, name}|json_encode }}">
+
+                                <div class="col col-product-image">
+                                    {% block component_product_box_image %}{% if not config('YaparisTechparts.config.showImageInPopup') %}{% else %}{{ parent() }}{% endif %}{% endblock %}
+                                </div>
+
+								<div class="col col-product-name">
+									<a class="tparts--list-link" href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}" title="{{ product.translated.name|u.truncate(50, '...', true) }}">
+										{{ product.translated.name|u.truncate(50, '...', true) }}
+									</a>
+								</div>
+
+								<div class="col col-product-number">
+										{{ product.productNumber }}
+								</div>
+
+								<div class="col col-product-price">
+									{% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' with {
+										product: product
+									} %}
+								</div>
+
+								<div class="col col-actions">
+									    {% sw_include '@YaparisTechparts/storefront/techparts/components/action.html.twig' with {
+                                            product: product,
+                                            recommendedQty: product.quantity
+                                        } %}
+								</div>
+							</div>
+
+                    {% block yaparis_techparts_illustration_part_list_table_footer %}
+                        <footer>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="product-detail-delivery-information">
+                                            {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' with {
+                                                product: product
+                                            } %}
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

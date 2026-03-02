@@ -1,0 +1,27 @@
+{
+    "name": "yaparis-techparts-custom/yaparis-techparts-custom",
+    "description": "yaparis-techparts-custom/yaparis-techparts-custom",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.12",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "YaparisTechpartsCustom\\YaparisTechpartsCustom",
+        "label": {
+            "de-DE": "Techparts Custom Plugin",
+            "en-GB": "Techparts Custom Plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "YaparisTechpartsCustom\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YaparisTechpartsCustom\\Tests\\": "tests/"
+        }
+    }
+}

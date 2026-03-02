@@ -1,0 +1,29 @@
+{% sw_extends '@storefront/storefront/section/cms-section-sidebar.html.twig' %}
+
+{% block section_sidebar_content %}
+   <div class="cms-section-sidebar-sidebar-content col-lg-4 col-xl-3">
+        {% for block in sidebarBlocks %}
+            {% block section_sidebar_content_block %}
+                {% sw_include '@Storefront/storefront/techparts/sidebar.html.twig' %}
+                {% set navigationMaxDepth = context.salesChannel.navigationCategoryDepth %}
+                <span class="twt-subcategory-navigation-depth" data-depth="{{ navigationMaxDepth }}"></span>
+                {# {% sw_include '@Storefront/storefront/section/cms-section-block-container.html.twig' %} #}
+            {% endblock %}
+        {% endfor %}
+   </div>
+{% endblock %}
+
+{% block section_main_content_block %}
+    {% if block.type == 'product-listing' %}
+        <div class="techparts">
+            {% if page.extensions.techparts.lastCategory %}
+                {% sw_include "@YaparisTechparts/storefront/techparts/illustration.html.twig" %}
+            {% else %}
+                {% sw_include "@YaparisTechparts/storefront/techparts/category.html.twig" %}
+            {% endif %}
+        </div>
+    {% elseif block.type == 'sidebar-filter' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
