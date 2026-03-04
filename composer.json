@@ -2,7 +2,7 @@
     "name": "yaparis-techparts-custom/yaparis-techparts-custom",
     "description": "yaparis-techparts-custom/yaparis-techparts-custom",
     "type": "shopware-platform-plugin",
-    "version": "1.0.12",
+    "version": "1.0.15",
     "license": "MIT",
     "require": {
         "shopware/core": "~6.7.0"
