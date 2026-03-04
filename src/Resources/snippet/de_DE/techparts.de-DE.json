@@ -1,0 +1,8 @@
+{
+  "techparts": {
+    "checkout": {
+      "confirmSubmit": "Zahlungspflichtig bestellen",
+      "confirmClaim": "Gewährleistungsantrag einreichen"
+    }
+  }
+}

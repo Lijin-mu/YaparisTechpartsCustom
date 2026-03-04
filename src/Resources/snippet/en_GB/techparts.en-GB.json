@@ -1,0 +1,8 @@
+{
+  "techparts": {
+    "checkout": {
+      "confirmSubmit": "Confirm & Pay",
+      "confirmClaim": "Submit warranty claim"
+    }
+  }
+}
