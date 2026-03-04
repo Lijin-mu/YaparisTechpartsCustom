@@ -1,0 +1,13 @@
+{% sw_extends '@TcinnThemeWareStrong/storefront/component/product/card/box-standard.html.twig' %}
+
+{# YaparisTechpartsCustom: show delivery information in product boxes (listing) #}
+{% block component_product_box_action %}
+    <div class="product-delivery-information-wrapper mt-1">
+        {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' with {
+            page: { product: product }
+        } %}
+    </div>
+
+    {{ parent() }}
+{% endblock %}
+
