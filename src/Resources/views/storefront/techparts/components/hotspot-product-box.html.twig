@@ -1,58 +1,5 @@
 {% sw_extends '@YaparisTechparts/storefront/techparts/components/hotspot-product-box.html.twig' %}
 
-
-
-{# {% block component_product_box_name %}
-    <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
-       class="product-name"
-       title="{{ name }}">
-        {{ name }} ({{ product.productNumber }})
-    </a>
-{% endblock %}
-
-{% block component_product_box_price %}
-    {{ parent() }}
-
-    {% block component_product_box_tax %}
-        <div class="product-detail-tax-container">
-            {% if context.taxState == "gross" %}
-                {% set taxText = "general.grossTaxInformation"|trans|sw_sanitize %}
-            {% else %}
-                {% set taxText = "general.netTaxInformation"|trans|sw_sanitize %}
-            {% endif %}
-
-            <p class="product-detail-tax">
-                {% block component_product_box_tax_link %}
-                    <a class="product-detail-tax-link"
-                       href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
-                       title="{{ taxText }}"
-                       data-ajax-modal="true"
-                       data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
-                        {{ taxText }}
-                    </a>
-                {% endblock %}
-            </p>
-        </div>
-    {% endblock %}
-
-    {% block component_product_box_delivery_informations %}
-        <div class="product-detail-delivery-information">
-            {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' with {
-                product: product
-            } %}
-        </div>
-    {% endblock %}
-{% endblock %} #}
-
-{# {% block component_product_box_action %}
-    {% sw_include '@YaparisTechparts/storefront/techparts/components/action.html.twig' with {
-        product: product,
-        recommendedQty: product.quantity
-    } %}
-{% endblock %} #}
-
-{# {% block component_product_box_image %}{% if not config('YaparisTechparts.config.showImageInPopup') %}{% else %}{{ parent() }}{% endif %}{% endblock %} #}
-
 {% block component_product_box_description %}{% endblock %}
 {% block component_product_box_rating %}{% endblock %}
 {% block component_product_box_variant_characteristics %}{% endblock %}
@@ -94,10 +41,12 @@
 								</div>
 
 								<div class="col col-actions">
-									    {% sw_include '@YaparisTechparts/storefront/techparts/components/action.html.twig' with {
+                                    {% block component_product_box_action %}
+                                        {% sw_include '@YaparisTechparts/storefront/techparts/components/action.html.twig' with {
                                             product: product,
                                             recommendedQty: product.quantity
                                         } %}
+                                    {% endblock %}
 								</div>
 							</div>
 

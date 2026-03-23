@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% block component_product_box_action_buy_button %}
+    {% sw_include "@YaparisTechparts/storefront/techparts/components/quantity-box.html.twig" %}
+    {{ parent() }}
+{% endblock %}

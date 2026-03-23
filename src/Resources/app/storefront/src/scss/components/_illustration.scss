@@ -33,3 +33,29 @@ a.product-price-tax-link:not(:hover) {
   text-decoration: none;
   color: inherit;
 }
+
+.tparts--explosion-chart-list{
+  .product-action{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .product-detail-quantity-group{
+      min-width: 120px;
+    }
+    .btn-light{
+      font-size: 12px;
+      white-space: wrap;
+      line-height: 1.3;
+    }
+  }
+}
+
+.tparts-explosion-box{
+  .hotspot--popup{
+    .product-action{
+      .product-detail-quantity-group{
+        display: none;
+      }
+    }
+  }
+}
