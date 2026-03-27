@@ -4,5 +4,10 @@
       "confirmSubmit": "Zahlungspflichtig bestellen",
       "confirmClaim": "Gewährleistungsantrag einreichen"
     }
+  },
+  "custom": {
+    "checkout": {
+      "mandatory1": "warrenty claim conditions"
+    }
   }
 }

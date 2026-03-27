@@ -4,5 +4,10 @@
       "confirmSubmit": "Confirm & Pay",
       "confirmClaim": "Submit warranty claim"
     }
+  },
+  "custom": {
+    "checkout": {
+      "mandatory1": "warrenty claim conditions"
+    }
   }
 }

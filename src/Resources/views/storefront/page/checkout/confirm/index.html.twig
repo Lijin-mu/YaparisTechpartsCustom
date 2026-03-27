@@ -1,5 +1,31 @@
 {% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
 
+
+ {% block page_checkout_confirm_tos_control %}
+    {{ parent() }}
+    {% set warrentyClaimPaymentTechnicalName = config('YaparisTechpartsCustom.warrentyClaimPaymentTechnicalName') %}
+    {% if context.paymentMethod.technicalName == config('YaparisTechpartsCustom.warrentyClaimPaymentTechnicalName') %}
+        <h2>selected payment method</h2>
+    {% endif %}
+    <div class="form-check mt-3">
+        {% block page_checkout_confirm_warrenty_claim_control_checkbox %}
+            <input type="checkbox"
+                class="checkout-confirm-warrenty-claim-checkbox form-check-input{% if formViolations.getViolations('/tos') is not empty %} is-invalid{% endif %}"
+                required="required"
+                id="warrentyClaimCheck"
+                form="confirmOrderForm"
+                name="warrentyClaimCheck">
+        {% endblock %}
+
+        {% block page_checkout_confirm_warrenty_claim_control_label %}
+            <label for="warrentyClaimCheck"
+                class="checkout-confirm-tos-label custom-control-label">
+                {{ 'custom.checkout.mandatory1'|trans|raw }}
+            </label>
+        {% endblock %}
+    </div>
+{% endblock %}
+
 {% block page_checkout_confirm_form_submit %}
 	{% set paymentClaim = false %}
 	{% if selectedPaymentMethodId is not defined %}
