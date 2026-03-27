@@ -6,12 +6,11 @@
         <title>Basic Configuration</title>
         <title lang="de-DE">Grundeinstellungen</title>
 
-        <component name="sw-text-field">
-            <name>warrentyClaimPaymentTechnicalName</name>
-            <label>Technical name of the payment method for warranty claims</label>
-            <label lang="de-DE">Technische Benennung der Zahlungsart für Gewährleistungsansprüche</label>
-            <helpText>The technical name can be found in the payment method details.</helpText>
-            <helpText lang="de-DE">Der technische Name ist in den Details der Zahlungsmethode zu finden.</helpText>
+        <component name="sw-entity-multi-id-select">
+            <name>paymentMethodIds</name>
+            <entity>payment_method</entity>
+            <label>Select payment methods to show warranty claim checkbox</label>
+            <label lang="de-DE">Zahlungsarten auswählen, für die das Gewährleistungsanspruchs-Checkbox angezeigt werden soll</label>
         </component>
     </card>
 </config>
