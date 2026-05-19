@@ -39,9 +39,6 @@
 
 
 {% block page_checkout_additional %}
-	{% if context.paymentMethod.id not in paymentMethodIds %}
-		{{parent()}}
-	{% endif %}
 {% endblock %}
 
 {% block page_checkout_aside_actions %}

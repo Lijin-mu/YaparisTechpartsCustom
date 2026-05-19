@@ -9,8 +9,8 @@
         <component name="sw-entity-multi-id-select">
             <name>paymentMethodIds</name>
             <entity>payment_method</entity>
-            <label>Select payment methods to show warranty claim checkbox</label>
-            <label lang="de-DE">Zahlungsarten auswählen, für die das Gewährleistungsanspruchs-Checkbox angezeigt werden soll</label>
+            <label>Select payment methods for warranty claim</label>
+            <label lang="de-DE">Zahlungsarten auswählen, für die der Gewährleistungsanspruch angezeigt werden soll</label>
         </component>
     </card>
 </config>
