@@ -11,6 +11,11 @@ use Shopware\Core\Framework\Plugin\Context\UpdateContext;
 
 class YaparisTechpartsCustom extends Plugin
 {
+    public function getTemplatePriority(): int
+    {
+        return 1000;
+    }
+
     public function install(InstallContext $installContext): void
     {
         // Do stuff such as creating a new payment method
