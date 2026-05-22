@@ -23,6 +23,35 @@
 {% block page_checkout_additional %}
 {% endblock %}
 
+{% block page_checkout_confirm_product_table %}
+	<div class="confirm-product">
+	{% block page_checkout_confirm_table_container %}
+		<div class="card">
+			<ul class="card-body list-unstyled">
+				{% block page_checkout_confirm_table_header %}
+					{% sw_include '@Storefront/storefront/component/checkout/cart-header.html.twig' with {
+						showTaxPrice: showTaxPrice,
+						showSubtotal: showSubtotal
+					} %}
+				{% endblock %}
+
+				{% block page_checkout_confirm_table_items %}
+					{% for lineItem in page.cart.lineItems %}
+						{% block page_checkout_confirm_table_item %}
+							{% sw_include '@Storefront/storefront/component/line-item/line-item.html.twig' with {
+								redirectTo: 'frontend.checkout.confirm.page',
+								showTaxPrice: showTaxPrice,
+								showSubtotal: showSubtotal
+							} %}
+						{% endblock %}
+					{% endfor %}
+				{% endblock %}
+			</ul>
+		</div>
+{% endblock %}
+</div>
+{% endblock %}
+
 {% block page_checkout_aside_actions %}
 	<div class="checkout-aside-action">
 		<form id="confirmOrderForm"
